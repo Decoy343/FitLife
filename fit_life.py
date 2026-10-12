@@ -1,27 +1,28 @@
-# узнаем имя
-name = input()
+def generate_report(user_name, user_age, bmi, water_l):
+    report = f"""Отчет для пользователя: {user_name}, ({user_age} г.)
+Ваш Индекс Массы Тела: {bmi}
+Рекомендуемая норма воды: {water_l} л. в день
 
-# узнаем возраст
-age = input()
-age_int = int(age)
+Расчет окончен. Будьте здоровы!"""
+    return report
 
-# узнаем вес
-weight_str = input()
-weight = float(weight_str)
 
-# узнаем рост
-height_str = input()
-height = float(height_str)
+if __name__ == "__main__":
+    # Сбор данных
+    print('Здравствуте, добро пожаловать в FitLifeBot.')
+    user_name = input('Введите имя:')
+    user_age = int(input('Введите возраст:'))
+    user_weight = float(input('Введите вес:'))
+    user_height = float(input('Введите рост:'))
 
-# расчёт индекса массы тела
-bmi = round(weight / (height ** 2), 1)
+    # расчёты
+    bmi = round(user_weight / (user_height ** 2), 1)
+    water_ml = user_weight * 30
+    water_l = round(water_ml / 1000, 3)
 
-# расчёт нормы воды в день
-water_l = (weight * 30) / 1000
+    # ---ВЫВОД
+    final_report = generate_report(user_name, user_age, bmi, water_l)
 
-# ---ВЫВОД
-print(f'Отчет для пользователя:{name}, ({age_int} г.)')
-print(f'Ваш Индекс Массы Тела:{bmi}')
-print(f'Рекомендуемая норма воды:{water_l} л. в день')
-print()
-print('Расчет окончен. Будьте здоровы!')
+
+    print(f"{final_report}")
+    
